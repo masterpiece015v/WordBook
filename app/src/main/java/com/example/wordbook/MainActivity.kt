@@ -13,15 +13,21 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        //View変数
         val rvCategory = findViewById<RecyclerView>(R.id.rvCategory)
+
+        //RecyclerView用のリスト
         val categoryList = mutableListOf<String>()
+
+        //SQLiteの処理
         val helper = WordBookDatabaseHelper(this)
         val cols = arrayOf("category")
         helper.readableDatabase.use{db->
+            //第一引数はdistinctするか否か
             db.query(
                 true,"WordBookTable",cols,null,null,null,null,null,null
             ).use{cs->
+                //カーソルの中身がなくなるまでcategoryListへ追加する
                 if(cs.moveToFirst()){
                     do{
                         Log.d("value", cs.getString(0))
@@ -32,10 +38,10 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
+        //RecyclerViewのためのアダプター
         val adapter = CategoryListAdapter(categoryList)
         adapter.setOnClCategoryClickListener {
-            //Toast.makeText(this,it,Toast.LENGTH_SHORT).show()
+            //選択したCategoryの値をWordActivityに渡して遷移する
             val intent = Intent(this,WordActivity::class.java).apply{
                 putExtra("category",it)
             }

@@ -3,9 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/maste/AndroidStudioProjects/WordBook/app/src/main/res/layout/activity_main.xml" value="0.18541666666666667" />
-        <entry key="..\:/Users/maste/AndroidStudioProjects/WordBook/app/src/main/res/layout/activity_word.xml" value="0.2265625" />
-        <entry key="..\:/Users/maste/AndroidStudioProjects/WordBook/app/src/main/res/layout/rv_category_item.xml" value="0.184375" />
+        <entry key="..\:/Users/maste/AndroidStudioProjects/WordBook/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/maste/AndroidStudioProjects/WordBook/app/src/main/res/layout/activity_word.xml" value="0.33" />
+        <entry key="..\:/Users/maste/AndroidStudioProjects/WordBook/app/src/main/res/layout/rv_category_item.xml" value="0.33" />
       </map>
     </option>
   </component>

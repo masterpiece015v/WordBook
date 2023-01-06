@@ -12,7 +12,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class WordActivity : AppCompatActivity() {
-
+    //View変数
     lateinit var toggle :ToggleButton
     lateinit var cpCount :Chip
     lateinit var swRemember : Switch
@@ -20,14 +20,17 @@ class WordActivity : AppCompatActivity() {
     lateinit var btnBack : FloatingActionButton
     lateinit var btnClose : FloatingActionButton
     lateinit var btnNext : FloatingActionButton
+    //データベースヘルパーの変数
     lateinit var helper : WordBookDatabaseHelper
+    //wordBookListの要素番号
     var index = 0
+    //WordBookのリスト
     val wordBookList = mutableListOf<WordBook>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_word)
-        //ビュー
+        //ビューの関連付け
         toggle = findViewById(R.id.toggle)
         cpCount = findViewById(R.id.cpCount)
         swRemember = findViewById(R.id.swRemember)
@@ -69,6 +72,7 @@ class WordActivity : AppCompatActivity() {
             }
         }
 
+        //Toggleボタンのクリック
         toggle.setOnClickListener {
             if( toggle.isChecked ){
                 //日本語
@@ -78,7 +82,7 @@ class WordActivity : AppCompatActivity() {
                 txtWord.text = wordBookList[index].japanese
             }
         }
-        //<<ボタン
+        //<< floatingボタン
         btnBack.setOnClickListener {
             if(index > 0 ){
                 index--
@@ -86,7 +90,7 @@ class WordActivity : AppCompatActivity() {
             }
         }
 
-        //>>ボタン
+        //>> floatingボタン
         btnNext.setOnClickListener {
             Log.d("value",index.toString())
             if( wordBookList.size-1 > index){
@@ -95,12 +99,12 @@ class WordActivity : AppCompatActivity() {
             }
         }
 
-        //×ボタン
+        //× floating ボタン
         btnClose.setOnClickListener {
             finish()
         }
     }
-
+    //WordActivityを終了するときのコールバックメソッド
     override fun onDestroy() {
         super.onDestroy()
         //データベースに反映する
